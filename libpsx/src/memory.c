@@ -107,7 +107,7 @@ void *calloc(size_t number, size_t size)
 	int x;
 	
 	if(ptr == NULL)
-		ptr = NULL;
+		return NULL;
 		
 	for(x = 0; x < (number * size); x++)
 		cptr[x] = 0;
