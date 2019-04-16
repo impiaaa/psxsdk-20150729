@@ -14,9 +14,9 @@ static void call_ctors(void)
 	
 	void **p = &__ctor_list;
 	
-        for (++p; *p != NULL && p < &__ctor_end; p++)
+        for (++p; *p != NULL && p < &__ctor_end && *p != (void*)-1; p++)
                 (*(void (**)())p)();
-	
+
 	dprintf("Finished calling static constructors\n");
  }
 
