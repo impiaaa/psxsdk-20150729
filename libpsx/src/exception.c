@@ -176,8 +176,8 @@ extern void _internal_cdromlib_callback();
 
 // Change exception vector to point to our exception manager
 
-	*((unsigned int*)0x80000080) = 0x08000000 | ((((unsigned int)__psxsdk_exception_manager)>>2) & 0x3FFFFFF);
-	*((unsigned int*)0x80000084) = 0;
+	*((volatile unsigned int*)0x80000080) = 0x08000000 | ((((unsigned int)__psxsdk_exception_manager)>>2) & 0x3FFFFFF);
+	*((volatile unsigned int*)0x80000084) = 0;
 
 
 // Enable interrupt generation, and interrupt 2 (PlayStation Interrupt Controller)

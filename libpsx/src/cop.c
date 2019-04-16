@@ -5,7 +5,7 @@ unsigned int get_cop_register(unsigned char cop_num,
 {
 // Workaround for MIPS' simplicistic instruction set...	
 	
-	unsigned int instr[] =
+	static volatile unsigned int instr[] __attribute__ ((aligned)) =
 		{0x40020000, // cfc $v0, 0
 		  0x03E00008, // jr $ra
 		  0x00000000, // nop
@@ -24,7 +24,7 @@ unsigned int get_cop_ctrl_register(unsigned char cop_num,
 							unsigned char register_num)
 {
 // Workaround for MIPS' simplicistic instruction set...	
-	unsigned int instr[] =
+	static volatile unsigned int instr[] __attribute__ ((aligned)) =
 		{0x40420000, // mfc $v0, 0
 		  0x03E00008, // jr $ra
 		  0x00000000, // nop
@@ -49,7 +49,7 @@ void set_cop_register(unsigned char cop_num,
 					unsigned int value)
 {
 // Workaround for MIPS' simplicistic instruction set...	
-	unsigned int instr[] =
+	static volatile unsigned int instr[] __attribute__ ((aligned)) =
 		{0x40840000, // mtc $a0, 0
 		  0x03E00008, // jr $ra
 		  0x00000000, // nop
@@ -69,7 +69,7 @@ void set_cop_ctrl_register(unsigned char cop_num,
 					unsigned int value)
 {
 // Workaround for MIPS' simplicistic instruction set...	
-	unsigned int instr[] =
+	static volatile unsigned int instr[] __attribute__ ((aligned)) =
 		{0x40C40000, // ctc $a0, 0
 		  0x03E00008, // jr $ra
 		  0x00000000, // nop
@@ -94,7 +94,7 @@ void run_cop_instruction(unsigned char cop_num,
 						unsigned int operation)
 {
 // Workaround for MIPS' simplicistic instruction set...	
-	unsigned int instr[] =
+	static volatile unsigned int instr[] __attribute__ ((aligned)) =
 		{0x42000000, // cop 0
 		  0x03E00008, // jr $ra
 		  0x00000000, // nop
