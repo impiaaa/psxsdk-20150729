@@ -19,33 +19,33 @@ SECTIONS
     . = 0x80010000;
 
     __exeData_start = .;
-	.exeData ALIGN(4) : { KEEP(*(.exeData*)) }
+	.exeData : { KEEP(*(.exeData*)) }
 	__exeData_end = .;
  
 	. = 0x801A0000;
 
 	__text_start = .;
-	.text ALIGN(4) : { *(.text*) }
+	.text : { *(.text*) }
 	__text_end = .;
 
 	__rodata_start = .;
-	.rodata ALIGN(4) : { *(.rodata) }
+	.rodata : { *(.rodata) }
 	__rodata_end = .;
 
 	__data_start = .;
-	.data ALIGN(4) : { *(.data) }
+	.data : { *(.data) }
 	__data_end = .;
 	
 	__ctor_list = .;
-	.ctors ALIGN(4) : { *(.ctors) }
+	.ctors : { *(.ctors) }
 	__ctor_end = .;
 	
 	__dtor_list = .;
-	.dtors ALIGN(4) : { *(.dtors) }
+	.dtors : { *(.dtors) }
 	__dtor_end = .;
 
 	__bss_start = .;
-	.bss  ALIGN(4) : { *(.bss) }
+	.bss : { *(.bss) }
 	__bss_end = .;
 
 	__scratchpad = 0x1f800000;
